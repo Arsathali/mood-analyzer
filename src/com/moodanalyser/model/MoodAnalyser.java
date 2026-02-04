@@ -19,6 +19,13 @@ public class MoodAnalyser {
 
         try{
             
+            if (message.trim().isEmpty()) {
+                throw new MoodAnalyserException(
+                        MoodAnalyserException.ExceptionType.EMPTY_MOOD,
+                        "Mood should not be EMPTY"
+                );
+            }
+
             if (message.contains("Sad")) {
                 return "SAD";
             }
