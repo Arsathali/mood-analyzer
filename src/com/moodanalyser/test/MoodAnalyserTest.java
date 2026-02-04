@@ -9,22 +9,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MoodAnalyserTest {
 
     @Test
-    public void givenSadMoodMessage_shouldReturnSAD() throws MoodAnalyserNullException {
+    public void givenSadMoodMessage_shouldReturnSAD(){
         MoodAnalyser analyser = new MoodAnalyser("I am in Sad Mood");
         String mood = analyser.analyseMood();
         assertEquals("SAD", mood);
     }
 
     @Test
-    public void givenAnyMoodMessage_shouldReturnHappy() throws MoodAnalyserNullException {
+    public void givenAnyMoodMessage_shouldReturnHappy() {
         MoodAnalyser analyser = new MoodAnalyser("I am in happy Mood");
         String mood = analyser.analyseMood();
         assertEquals("HAPPY", mood);
     }
 
     @Test
-    public void givenNullMood_ShouldThrowMoodAnalyserException(){
+    public void givenNullMood_ShouldReturnHAPPY() {
         MoodAnalyser analyser = new MoodAnalyser(null);
-         assertThrows( MoodAnalyserNullException.class , ()-> analyser.analyseMood());
+        String mood = analyser.analyseMood();
+        assertEquals("HAPPY", mood);
     }
 }

@@ -14,15 +14,14 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood() throws MoodAnalyserNullException{
+    public String analyseMood(){
 
-        if(message == null || message.trim().isEmpty()){
-           throw new MoodAnalyserNullException("Mood should not be NULL");
-        }
-
-        if(message.toLowerCase().contains("sad")){
-            return "SAD";
-        }else{
+        try {
+            if (message.contains("Sad")) {
+                return "SAD";
+            }
+            return "HAPPY";
+        } catch (NullPointerException e) {
             return "HAPPY";
         }
     }
