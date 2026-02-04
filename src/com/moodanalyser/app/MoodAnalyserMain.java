@@ -1,7 +1,6 @@
 package com.moodanalyser.app;
 
 import com.moodanalyser.exception.MoodAnalyserException;
-import com.moodanalyser.exception.MoodAnalyserNullException;
 import com.moodanalyser.model.*;
 
 public class MoodAnalyserMain {

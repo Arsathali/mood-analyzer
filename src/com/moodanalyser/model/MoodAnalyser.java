@@ -16,23 +16,19 @@ public class MoodAnalyser {
 
     public String analyseMood() throws MoodAnalyserException{
 
-       if (message == null) {
+
+        try{
+            
+            if (message.contains("Sad")) {
+                return "SAD";
+            }
+            return "HAPPY";
+        }catch(NullPointerException e){
+
             throw new MoodAnalyserException(
                     MoodAnalyserException.ExceptionType.NULL_MOOD,
                     "Mood should not be NULL"
             );
         }
-
-        if (message.trim().isEmpty()) {
-            throw new MoodAnalyserException(
-                    MoodAnalyserException.ExceptionType.EMPTY_MOOD,
-                    "Mood should not be EMPTY"
-            );
-        }
-
-        if (message.contains("Sad")) {
-            return "SAD";
-        }
-        return "HAPPY";
     }
 }
