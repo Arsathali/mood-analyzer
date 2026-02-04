@@ -1,5 +1,5 @@
 package com.moodanalyser.test;
-import com.moodanalyser.exception.MoodAnalyserNullException;
+import com.moodanalyser.exception.MoodAnalyserException;
 import com.moodanalyser.model.MoodAnalyser;
 import org.junit.jupiter.api.Test;
 
@@ -9,23 +9,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MoodAnalyserTest {
 
     @Test
-    public void givenSadMoodMessage_shouldReturnSAD(){
+    public void givenSadMoodMessage_shouldReturnSAD() throws MoodAnalyserException{
         MoodAnalyser analyser = new MoodAnalyser("I am in Sad Mood");
         String mood = analyser.analyseMood();
         assertEquals("SAD", mood);
     }
 
     @Test
-    public void givenAnyMoodMessage_shouldReturnHappy() {
+    public void givenAnyMoodMessage_shouldReturnHappy() throws MoodAnalyserException {
         MoodAnalyser analyser = new MoodAnalyser("I am in happy Mood");
         String mood = analyser.analyseMood();
         assertEquals("HAPPY", mood);
     }
 
-    @Test
-    public void givenNullMood_ShouldReturnHAPPY() {
-        MoodAnalyser analyser = new MoodAnalyser(null);
-        String mood = analyser.analyseMood();
-        assertEquals("HAPPY", mood);
-    }
+
 }

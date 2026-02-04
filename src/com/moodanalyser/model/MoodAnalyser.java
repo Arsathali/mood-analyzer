@@ -1,6 +1,6 @@
 package com.moodanalyser.model;
 
-import com.moodanalyser.exception.MoodAnalyserNullException;
+import com.moodanalyser.exception.MoodAnalyserException;
 
 public class MoodAnalyser {
 
@@ -14,15 +14,25 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood(){
+    public String analyseMood() throws MoodAnalyserException{
 
-        try {
-            if (message.contains("Sad")) {
-                return "SAD";
-            }
-            return "HAPPY";
-        } catch (NullPointerException e) {
-            return "HAPPY";
+       if (message == null) {
+            throw new MoodAnalyserException(
+                    MoodAnalyserException.ExceptionType.NULL_MOOD,
+                    "Mood should not be NULL"
+            );
         }
+
+        if (message.trim().isEmpty()) {
+            throw new MoodAnalyserException(
+                    MoodAnalyserException.ExceptionType.EMPTY_MOOD,
+                    "Mood should not be EMPTY"
+            );
+        }
+
+        if (message.contains("Sad")) {
+            return "SAD";
+        }
+        return "HAPPY";
     }
 }
