@@ -1,0 +1,16 @@
+package com.moodanalyser.model;
+
+public class MoodAnalyser {
+
+    public String analyseMood(String message){
+
+        if(message == null || message.trim().isEmpty()){
+            return "HAPPY";
+        }
+        if(message.toLowerCase().contains("sad")){
+            return "SAD";
+        }else{
+            return "HAPPY";
+        }
+    }
+}
