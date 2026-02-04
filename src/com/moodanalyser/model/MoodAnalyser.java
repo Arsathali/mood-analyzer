@@ -1,5 +1,7 @@
 package com.moodanalyser.model;
 
+import com.moodanalyser.exception.MoodAnalyserNullException;
+
 public class MoodAnalyser {
 
     private String message;
@@ -12,10 +14,10 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood(){
+    public String analyseMood() throws MoodAnalyserNullException{
 
         if(message == null || message.trim().isEmpty()){
-            return "HAPPY";
+           throw new MoodAnalyserNullException("Mood should not be NULL");
         }
 
         if(message.toLowerCase().contains("sad")){
